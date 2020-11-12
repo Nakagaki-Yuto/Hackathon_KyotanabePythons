@@ -1,7 +1,7 @@
 {% extends "notice_board/base.html" %}
 
 {% block content %}
-    <a href="{% url 'signup' %}" class="btn">アカウントの登録がまだの方はこちら</a><br>
+    <a href="{% url 'signup' %}" class="btn btn-link">アカウントの登録がまだの方はこちら</a><br>
     {% if form.errors %}
         <p>ユーザー名もしくはパスワードが間違っています</p>
     {% endif %}

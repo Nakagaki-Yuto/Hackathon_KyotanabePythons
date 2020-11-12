@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def ToppageView(request):
-    """トップページ"""
+    """掲示板ページ"""
     return render(request, 'notice_board/toppage.html', {'request': request})
 
 
@@ -29,3 +29,9 @@ def SignupView(request):
         "profile_form": profile_form,
     }
     return render(request, 'registration/signup.html', context)
+
+
+@login_required
+def ProfileView(request):
+    """プロフィールページ"""
+    return render(request, 'notice_board/profilepage.html', {'request': request})

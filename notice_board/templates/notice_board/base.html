@@ -12,13 +12,8 @@
         <!-- .navbar -->
         <nav class="navbar" class="fixed">
             <ul class="navbar-list">
-                <li class="navbar-item"><a class="navbar-link" id="search" href="/">掲示板</a></li>
-                <li class="navbar-item"><a class="navbar-link" id="mypage" href="{% url 'mypage' %}">マイページ</a></li>
-                {% if user.is_authenticated %}
-                <li class="navbar-item"><a class="navbar-link" id="log" href="{% url 'logout' %}">ログアウト</a></li>
-                {% else %}
-                <li class="navbar-item"><a class="navbar-link" id="log" href="{% url 'login' %}">ログイン</a></li>               
-                {% endif %}
+                <li class="navbar-item"><a class="navbar-link" href="/">掲示板</a></li>
+                <li class="navbar-item"><a class="navbar-link" href="profile">プロフィール</a></li>
             </ul>
         </nav>
         <!-- /.navbar -->
