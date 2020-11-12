@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from .models import UserProfile
 from .forms import ProfileForm, UserCreateForm
 from django.contrib.auth.decorators import login_required
 
@@ -34,4 +35,6 @@ def SignupView(request):
 @login_required
 def ProfileView(request):
     """プロフィールページ"""
-    return render(request, 'notice_board/profilepage.html', {'request': request})
+
+    profile = UserProfile.objects.get(user=request.user)
+    return render(request, 'notice_board/profilepage.html', {'request': request, 'profile':profile})

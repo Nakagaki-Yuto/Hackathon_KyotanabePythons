@@ -2,11 +2,6 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone
 
-GENDER_CHOICES = (
-    ('1', '女性'),
-    ('2', '男性'),
-)
-
 GRADE＿CHOICES = (
     ('1', '学部1年'),
     ('2', '学部2年'),
@@ -15,6 +10,11 @@ GRADE＿CHOICES = (
     ('5', '修士1年'),
     ('6', '修士2年'),
 )
+GENDER_CHOICES = (
+    ('1', '女性'),
+    ('2', '男性'),
+)
+
 
 class UserProfile(models.Model):
     """
@@ -24,7 +24,7 @@ class UserProfile(models.Model):
     user:対応するユーザー
     university:大学名
     grade:学年
-    published_date:投稿日
+    gender:性別
     """
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     university = models.ForeignKey('University', on_delete=models.CASCADE)

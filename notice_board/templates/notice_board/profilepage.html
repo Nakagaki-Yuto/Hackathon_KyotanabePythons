@@ -3,4 +3,10 @@
 {% block content %}
 <h1>PROFILE PAGE</h1>
 <a href="{% url 'logout' %}" class="btn btn-link">ログアウトはこちら</a><br>
+
+<p>ユーザー名：{{ profile.user }}</p>
+<p>大学：{{ profile.university }}</p>
+<p>学年：{{ profile.get_grade_display }}</p>
+<p>性別：{{ profile.get_gender_display }}</p>
+
 {% endblock %}
