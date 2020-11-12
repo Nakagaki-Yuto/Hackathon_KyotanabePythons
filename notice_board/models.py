@@ -2,11 +2,42 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone
 
+GENDER_CHOICES = (
+    ('1', '女性'),
+    ('2', '男性'),
+)
+
+GRADE＿CHOICES = (
+    ('1', '学部1年'),
+    ('2', '学部2年'),
+    ('3', '学部3年'),
+    ('4', '学部4年'),
+    ('5', '修士1年'),
+    ('6', '修士2年'),
+)
+
+class UserProfile(models.Model):
+    """
+    ユーザープロフィール
+    - 各ユーザは一つのプロフィールを持つ
+
+    user:対応するユーザー
+    university:大学名
+    grade:学年
+    published_date:投稿日
+    """
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    university = models.ForeignKey('University', on_delete=models.CASCADE)
+    grade = models.CharField("学年", max_length=6, choices=GRADE_CHOICES, blank=True)
+    gender = models.CharField("性別", max_length=2, choices=GENDER_CHOICES, blank=True)
+
+    def __str__(self):
+        return self.user.username
+
 
 class University(models.Model):
     """
     大学
-    - ユーザーは一つの大学に所属する
 
     name:大学名
     """
@@ -19,35 +50,35 @@ class University(models.Model):
 class Thread(models.Model):
     """
     スレッド（掲示板）
-    - 各大学は0個以上のスレッドを持つ
 
-    university_id:大学のid
+    university:属している大学
     author:作成者
     title:スレッド名
     created_date:作成日
     """
-    university_id = models.ForeignKey('University', on_delete=models.CASCADE)
+    university = models.ForeignKey('University', on_delete=models.CASCADE)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.university_id
+        return self.title
+
 
 class Post(models.Model):
     """
     投稿
     - 各スレッドは0個以上の投稿を持つ
 
-    thread_id:スレッドのid
+    thread:属しているスレッド
     author:投稿者
     title:スレッド名
     published_date:投稿日
     """
-    thread_id = models.ForeignKey('Thread', on_delete=models.CASCADE)
+    thread = models.ForeignKey('Thread', on_delete=models.CASCADE)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     text = models.TextField()
     published_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.thread_id
+        return self.text
