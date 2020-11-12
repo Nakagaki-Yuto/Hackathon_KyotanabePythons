@@ -1,8 +1,9 @@
-{% extends "blog/base.html" %}
+{% extends "notice_board/base.html" %}
 
 {% block content %}
+    <a href="{% url 'signup' %}" class="btn">アカウントの登録がまだの方はこちら</a><br>
     {% if form.errors %}
-        <p>ユーザー名もしくはパスワードを入力しなおしてください。</p>
+        <p>ユーザー名もしくはパスワードが間違っています</p>
     {% endif %}
 
     <form method="post" action="{% url 'login' %}">
