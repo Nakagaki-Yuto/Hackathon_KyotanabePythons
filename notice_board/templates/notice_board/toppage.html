@@ -3,9 +3,23 @@
 
 {% block content %}
 
+{% if profile.is_university %}
+<div class="report-section section">
+    <div class="section-title report-title">
+        <h3>『{{ profile.university }}』様向け 分析レポート</h3>
+    </div>
+    <div class="section-body report-body">
+        <h3>レポート内容</h3>
+        <div class="report-content"></div>
+    </div>
+
+   
+</div>
+
+{% else %}
 <div class="category-section section">
     <div class="section-title category-title">
-        <h3>{{ profile.university }} の掲示板</h3>
+        <h3>『{{ profile.university }}』の掲示板</h3>
     </div>
     <div class="section-body category-body">
         <div class="category-item">
@@ -52,6 +66,6 @@
         </div>
     </div>
 </div>
-
+{% endif %}
 
 {% endblock %}

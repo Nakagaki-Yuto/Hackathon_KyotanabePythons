@@ -32,7 +32,6 @@ def SignupView(request):
 @login_required
 def ProfileView(request):
     """プロフィール"""
-
     profile = UserProfile.objects.get(user=request.user)
     return render(request, 'notice_board/profilepage.html', {'request': request, 'profile': profile})
     
@@ -40,7 +39,6 @@ def ProfileView(request):
 @login_required
 def ToppageView(request):
     """トップページ"""
-
     profile = UserProfile.objects.get(user=request.user)
     threads = Thread.objects.filter(university=profile.university)
     return render(request, 'notice_board/toppage.html', {'request': request, 'profile':profile, 'threads':threads})
@@ -63,7 +61,8 @@ def ThreadListView(request, pk):
         cate = 'その他・雑談'
     
     threads = Thread.objects.filter(category=pk)
-    return render(request, 'notice_board/thread_list.html', {'category':cate, 'threads':threads})
+    profile = UserProfile.objects.get(user=request.user)
+    return render(request, 'notice_board/thread_list.html', {'category':cate, 'profile':profile, 'threads':threads})
 
 
 @login_required
@@ -71,41 +70,51 @@ def ThreadDetailView(request, pk):
     """掲示板"""
     thread = get_object_or_404(Thread, pk=pk)
     posts = Post.objects.filter(thread=thread)
-    return render(request, 'notice_board/thread_detail.html', {'thread': thread, 'posts':posts})
+    profile = UserProfile.objects.get(user=request.user)
+    return render(request, 'notice_board/thread_detail.html', {'thread': thread, 'profile':profile, 'posts':posts})
 
 
 @login_required
 def AddPostView(request, pk):
     """掲示板への投稿"""
-    thread = get_object_or_404(Thread, pk=pk)
-    posts = Post.objects.filter(thread=thread)
-    text = request.POST['post-text']
+    if request.method == "POST": 
+        thread = get_object_or_404(Thread, pk=pk)
+        posts = Post.objects.filter(thread=thread)
+        text = request.POST['post-text']
     
-    post = Post()
-    post.thread = thread
-    post.author = request.user
-    post.text = text
-    post.save()
+        post = Post()
+        post.thread = thread
+        post.author = request.user
+        post.text = text
+        post.save()
 
-    return render(request, 'notice_board/thread_detail.html', {'thread': thread, 'posts':posts})
+    profile = UserProfile.objects.get(user=request.user)
+    return render(request, 'notice_board/thread_detail.html', {'thread': thread, 'profile':profile, 'posts':posts})
 
 
 @login_required
 def AddThreadView(request):
     """掲示板の作成"""
-    category_id = request.POST['thread-form-category']
-    title = request.POST['thread-form-title']
-    category = Category.objects.get(id=category_id)
-    user = UserProfile.objects.get(user=request.user)
+    if request.method == "POST": 
+        category_id = request.POST['thread-form-category']
+        title = request.POST['thread-form-title']
+        category = Category.objects.get(id=category_id)
+        user = UserProfile.objects.get(user=request.user)
 
-    thread = Thread()
-    thread.university = user.university
-    thread.author = request.user
-    thread.title = title
-    thread.category = category
-    thread.save()
+        thread = Thread()
+        thread.university = user.university
+        thread.author = request.user
+        thread.title = title
+        thread.category = category
+        thread.save()
 
     thread = Thread.objects.latest('created_date')
+    profile = UserProfile.objects.get(user=request.user)
+    return render(request, 'notice_board/thread_detail.html', {'thread': thread, 'profile': profile})
+    
 
-
-    return render(request, 'notice_board/thread_detail.html', {'thread': thread})
+@login_required
+def ReportView(request):
+    """レポート"""
+    profile = UserProfile.objects.get(user=request.user)
+    return render(request, 'notice_board/thread_detail.html', {'profile': profile})

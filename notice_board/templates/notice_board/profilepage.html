@@ -7,12 +7,24 @@
     <div class="section-title profile-title">
         <h3>プロフィール</h3>
     </div>
+    {% if profile.is_university %}
+    <h3>大学様用アカウント</h3>
     <div class="section-body profile-body">
         <h4>ユーザー名： {{ profile.user }}</h4>
-        <h4>大学： {{ profile.university }}</h4>
+        <h4>メールアドレス： {{ profile.mail }}</h4>
+        <h4>大学名： {{ profile.university }}</h4>
+    </div>
+
+    {% else %}
+    <h3>学生様用アカウント</h3>
+    <div class="section-body profile-body">
+        <h4>ユーザー名： {{ profile.user }}</h4>
+        <h4>メールアドレス： {{ profile.mail }}</h4>
+        <h4>大学名： {{ profile.university }}</h4>
         <h4>学年： {{ profile.get_grade_display }}</h4>
         <h4>性別： {{ profile.get_gender_display }}</h4>   
     </div>
+    {% endif %}
     <a href="{% url 'logout' %}" class="btn logout-btn">ログアウト</a>
 </div>
 

@@ -28,8 +28,10 @@ class UserProfile(models.Model):
     """
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     university = models.ForeignKey('University', on_delete=models.CASCADE)
+    mail = models.EmailField(max_length=70)
     grade = models.CharField("学年", max_length=6, choices=GRADE_CHOICES, blank=True)
     gender = models.CharField("性別", max_length=2, choices=GENDER_CHOICES, blank=True)
+    is_university = models.BooleanField("大学様用アカウント", default=False)
 
     def __str__(self):
         return self.user.username

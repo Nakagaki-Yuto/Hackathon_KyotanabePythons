@@ -11,6 +11,6 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = (
-            "university", "grade", "gender"
+            "mail", "university", "grade", "gender", "is_university"
         )
 

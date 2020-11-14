@@ -182,12 +182,12 @@ body {
 
   /*profile-section*/
   .profile-body {
-    width: 250px;
-    margin: 0 auto;
+    width: 450px;
+    margin: 80px auto 0;
     text-align: left;
   }
 
-  .profile-section h3 {
+  .profile-title h3 {
     margin: 100 auto;
     background: linear-gradient(transparent 95%, #333 20%)
   }
@@ -206,6 +206,62 @@ body {
     background-color: #ccc;
   }
 
+  /*login-section*/
+  .login-section h3 {
+    margin: 100px auto;
+    background: linear-gradient(transparent 95%, #333 20%)
+  }
+
+  .signup-btn {
+    margin: 50px auto;
+    font-size: 16px;
+    text-align: center;
+    display: inline-block;
+    width: 370px;
+    height: 40px;
+    background-color: #ccc;
+  }
+
+  .login-form {
+    width: 400;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .login-input {
+    padding: 15px 10px 15px 50px;
+
+  }
+
+  .login-btn {
+    margin: 30px auto 30px;
+    font-size: 16px;
+    text-align: center;
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    background-color: #ccc;
+  }
+
+  /*report-section*/
+  .report-title h3 {
+    margin: 100px auto;
+    background: linear-gradient(transparent 95%, #333 20%)
+  }
+
+  .report-body {
+    width: 700px;
+    margin: 50px auto;
+    background-color: #EEE;
+    padding: 50px 50px;
+  }
+
+  .report-content {
+    
+  }
+
+  
+
   /*thread-list-section*/
   .thread-list-section h3 {
     margin: 100px auto;
@@ -222,10 +278,15 @@ body {
 
   /*thread-detail-section*/
   .thread-detail-section {
-    width: 700px;
+    width: 800px;
   }
   .thread-detail-title {
     margin: 100px auto;
+  }
+
+  .thread-detail-list {
+    background-color: #EEE;
+    padding: 50px 50px;
   }
 
   .thread-detail-section h2 {
@@ -253,7 +314,7 @@ body {
   }
 
   .post-form {
-    margin: 120px auto 20px;
+    margin: 100px auto 20px;
   }
 
   .post-text {
