@@ -55,11 +55,13 @@ class Thread(models.Model):
     author:作成者
     title:スレッド名
     created_date:作成日
+    category:カテゴリー名
     """
     university = models.ForeignKey('University', on_delete=models.CASCADE)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     created_date = models.DateTimeField(default=timezone.now)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
@@ -72,7 +74,7 @@ class Post(models.Model):
 
     thread:属しているスレッド
     author:投稿者
-    title:スレッド名
+    title:投稿内容
     published_date:投稿日
     """
     thread = models.ForeignKey('Thread', on_delete=models.CASCADE)
@@ -82,3 +84,15 @@ class Post(models.Model):
 
     def __str__(self):
         return self.text
+
+class Category(models.Model):
+    """
+    カテゴリー
+    
+    name:カテゴリーカテゴリー名
+    """
+    id = models.AutoField(primary_key=True, unique=True)
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name

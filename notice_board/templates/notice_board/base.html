@@ -13,12 +13,14 @@
         <nav class="navbar" class="fixed">
             <ul class="navbar-list">
                 <li class="navbar-item"><a class="navbar-link" href="/">掲示板</a></li>
-                <li class="navbar-item"><a class="navbar-link" href="profile">プロフィール</a></li>
+                <li class="navbar-item"><a class="navbar-link" href="{% url 'profile' %}">プロフィール</a></li>
             </ul>
         </nav>
         <!-- /.navbar -->
 
         {% block content %}
+
+        
         {% endblock %}
         
     </body>

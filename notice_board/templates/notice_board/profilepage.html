@@ -1,12 +1,19 @@
 {% extends "notice_board/base.html" %}
+{% load static %}
 
 {% block content %}
-<h1>PROFILE PAGE</h1>
-<a href="{% url 'logout' %}" class="btn btn-link">ログアウトはこちら</a><br>
 
-<p>ユーザー名：{{ profile.user }}</p>
-<p>大学：{{ profile.university }}</p>
-<p>学年：{{ profile.get_grade_display }}</p>
-<p>性別：{{ profile.get_gender_display }}</p>
+<div class="profile-section section">
+    <div class="section-title profile-title">
+        <h3>プロフィール</h3>
+    </div>
+    <div class="section-body profile-body">
+        <h4>ユーザー名： {{ profile.user }}</h4>
+        <h4>大学： {{ profile.university }}</h4>
+        <h4>学年： {{ profile.get_grade_display }}</h4>
+        <h4>性別： {{ profile.get_gender_display }}</h4>   
+    </div>
+    <a href="{% url 'logout' %}" class="btn logout-btn">ログアウト</a>
+</div>
 
 {% endblock %}

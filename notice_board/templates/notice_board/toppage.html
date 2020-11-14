@@ -1,5 +1,57 @@
 {% extends "notice_board/base.html" %}
+{% load static %}
 
 {% block content %}
-<h1>TOP PAGE</h1>
+
+<div class="category-section section">
+    <div class="section-title category-title">
+        <h3>{{ profile.university }} の掲示板</h3>
+    </div>
+    <div class="section-body category-body">
+        <div class="category-item">
+            <a href="{% url 'thread_list' pk=1 %}" class="btn btn-1">学業・講義</a>
+        </div>
+        <div class="category-item">
+            <a href="{% url 'thread_list' pk=2 %}" class="btn btn-2">サークル・部活動</a>
+        </div>
+        <div class="category-item">
+            <a href="{% url 'thread_list' pk=3 %}" class="btn btn-3">アルバイト</a>
+        </div>
+        <div class="category-item">
+            <a href="{% url 'thread_list' pk=4 %}" class="btn btn-4">就職活動</a>
+        </div>
+        <div class="category-item">
+            <a href="{% url 'thread_list' pk=5 %}" class="btn btn-5">趣味・遊び</a>
+        </div>
+        <div class="category-item">
+            <a href="{% url 'thread_list' pk=6 %}" class="btn btn-6">その他・雑談</a>
+        </div>
+
+        <div class="add-thread">
+            <h3>掲示板の作成</h3>
+            <form action="{% url 'add_thread' %}" method="POST" name="post-form">
+                {% csrf_token %}
+                <div class="thread-form" name="thread-form">
+                    <label>カテゴリー</label>
+                    <select class="thread-form-category" name="thread-form-category">
+                        <option value="1">学業・講義</option>
+                        <option value="2">サークル・部活動</option>
+                        <option value="3">アルバイト</option>
+                        <option value="4">就職活動</option>
+                        <option value="5">趣味・遊び</option>
+                        <option value="6">その他・雑談</option>
+                        </select>
+                    <br>
+                    <label>掲示板タイトル</label>
+                    <input type="text" class="thread-form-title" name="thread-form-title" required>
+                </div>
+                <div>
+                    <button type="submit" class="btn add-thread-btn" name='action' value="save">作成する</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 {% endblock %}

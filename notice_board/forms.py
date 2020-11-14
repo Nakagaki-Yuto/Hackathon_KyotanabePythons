@@ -13,3 +13,4 @@ class ProfileForm(forms.ModelForm):
         fields = (
             "university", "grade", "gender"
         )
+

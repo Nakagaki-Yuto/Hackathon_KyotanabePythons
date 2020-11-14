@@ -27,15 +27,6 @@ body {
     border-style: none;
   }
   
-  .btn-danger {
-    padding: 4px 12px;
-  }
-  
-  .favorite-btn{
-    padding-left: 7px;
-    color: rgb(110, 11, 175);
-  }
-  
   /*navbar*/
   .navbar {
     position: fixed;
@@ -48,7 +39,7 @@ body {
     -webkit-box-shadow: 0 3px 3px -3px rgba(255, 91, 91, 0.2);
     -moz-box-shadow: 0 3px 3px -3px rgba(241, 79, 79, 0.2);
     box-shadow: 0 3px 3px -3px rgba(0, 0, 0, .2);
-    background-color: rgb(110, 11, 175);
+    background-color: #333;
   }
   
   .navbar-list {
@@ -92,4 +83,189 @@ body {
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
     background-color: #fff;
+  }
+
+  /*section*/
+
+  .section {
+    max-width: 1000px;
+    text-align: center;
+    margin : 0 auto;
+
+  }
+
+  
+  /*category-section*/
+  .category-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 50px;
+  }
+  
+  .category-item {
+    flex: 0 0 46%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    margin: 0 auto;
+  }
+  
+  .category-title {
+    margin: 100 auto;
+  }
+
+  .category-item .btn {
+    margin: 25 auto;
+    font-size: 20px;
+    text-align: center;
+    display: inline-block;
+    width: 300px;
+    height: 45px;
+  }
+
+  .category-title h3 {
+    background: linear-gradient(transparent 95%, #333 20%)
+  }
+
+  .btn-1 {
+    background-color: #ff6;
+  }
+  .btn-2 {
+    background-color: #6f6;
+  }
+  .btn-3 {
+    background-color: #6ff;
+  }
+  .btn-4 {
+    background-color: #c6f;
+  }
+  .btn-5 {
+    background-color: #f69;
+  }
+  .btn-6 {
+    background-color: #f96;
+  }
+
+  .add-thread {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+
+  .add-thread h3{
+    margin: 120 auto 70;
+  }
+
+  .thread-form-category {
+    width: 150px;
+    height: 40px;
+    margin-bottom: 20px;
+  }
+  
+  .thread-form-title {
+    width: 600px;
+    height: 40px;
+  }
+
+  .add-thread-btn {
+    margin: 25 auto;
+    font-size: 16px;
+    text-align: center;
+    display: inline-block;
+    width: 150px;
+    height: 40px;
+    background-color: #ccc;
+  }
+
+  /*profile-section*/
+  .profile-body {
+    width: 250px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .profile-section h3 {
+    margin: 100 auto;
+    background: linear-gradient(transparent 95%, #333 20%)
+  }
+
+  .profile-section h4 {
+    margin: 40 auto;
+  }
+
+  .logout-btn {
+    margin: 50 auto;
+    font-size: 16px;
+    text-align: center;
+    display: inline-block;
+    width: 150px;
+    height: 40px;
+    background-color: #ccc;
+  }
+
+  /*thread-list-section*/
+  .thread-list-section h3 {
+    margin: 100px auto;
+    background: linear-gradient(transparent 95%, #333 20%)
+  }
+
+  .thread-list {
+    margin: 50px auto; 
+  }
+
+  .thread-title-btn{
+    font-size: 28px;
+  }
+
+  /*thread-detail-section*/
+  .thread-detail-section {
+    width: 700px;
+  }
+  .thread-detail-title {
+    margin: 100px auto;
+  }
+
+  .thread-detail-section h2 {
+    background: linear-gradient(transparent 95%, #333 20%)
+  }
+
+  .thread-detail {
+    margin: 50px auto; 
+  }
+
+  .thread-title-btn{
+    font-size: 28px;
+  }
+
+  .thread-detail-list {
+    text-align: left;
+  }
+  
+  .post {
+    margin: 40px auto;
+  }
+
+  .thread-detail-list p {
+    font-size: 12px;
+  }
+
+  .post-form {
+    margin: 120px auto 20px;
+  }
+
+  .post-text {
+    width: 500px;
+    height: 200px;
+  }
+  .add-post-btn {
+    margin: 40 auto;
+    font-size: 16px;
+    text-align: center;
+    display: inline-block;
+    width: 150px;
+    height: 40px;
+    background-color: #ccc;
   }

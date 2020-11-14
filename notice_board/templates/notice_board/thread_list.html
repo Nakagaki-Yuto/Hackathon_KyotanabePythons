@@ -1,0 +1,21 @@
+{% extends "notice_board/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="thread-list-section section">
+    <div class="section-title thread-list-title">
+        <h3>『{{ category }}』カテゴリーの掲示板一覧</h3>
+    </div>
+    <div class="section-body thread-list-body">
+    {% for thread in threads %}
+    <div class="thread-list">
+        <p>作成日：{{ thread.created_date }}</p>
+        <a href="{% url 'thread_detail' pk=thread.pk %}" class="btn thread-title-btn">{{ thread.title }}</a>
+    </div>
+    <hr>
+    {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
