@@ -2,7 +2,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import UserProfile, Thread, Post, Category, Report
 from .forms import ProfileForm, UserCreateForm
 from django.contrib.auth.decorators import login_required
-
+# import matplotlib.pyplot as plt
+# import numpy as np
+# import pandas as pd
+# import scipy as sc
+# import seaborn as sns
+# import MeCab
+# import codecs as cd
+# from collections import Counter
 
 
 def SignupView(request):
@@ -59,9 +66,9 @@ def ThreadListView(request, pk):
         cate='趣味・遊び'
     elif pk == 6:
         cate = 'その他・雑談'
-    
-    threads = Thread.objects.filter(category=pk)
+
     profile = UserProfile.objects.get(user=request.user)
+    threads = Thread.objects.filter(category=pk, university=profile.university)
     return render(request, 'notice_board/thread_list.html', {'category':cate, 'profile':profile, 'threads':threads})
 
 
@@ -131,4 +138,7 @@ def ReportView(request, pk):
     
     reports = Report.objects.filter(category=pk)
     profile = UserProfile.objects.get(user=request.user)
+    threads = Thread.objects.filter(category=pk, university=profile.university)
+
+
     return render(request, 'notice_board/report.html', {'category':cate, 'profile': profile, 'reports':reports})

@@ -76,7 +76,7 @@ class Post(models.Model):
 
     thread:属しているスレッド
     author:投稿者
-    title:投稿内容
+    text:投稿内容
     published_date:投稿日
     """
     thread = models.ForeignKey('Thread', on_delete=models.CASCADE)
@@ -106,6 +106,7 @@ class Report(models.Model):
 
     university:大学名
     category:カテゴリー
+    word:単語
     content:レポート内容
     """
     university = models.ForeignKey('University', on_delete=models.CASCADE)
