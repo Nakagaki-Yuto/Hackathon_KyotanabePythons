@@ -91,10 +91,27 @@ class Category(models.Model):
     """
     カテゴリー
     
-    name:カテゴリーカテゴリー名
+    name:カテゴリー名
     """
     id = models.AutoField(primary_key=True, unique=True)
     name = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name
+
+
+class Report(models.Model):
+    """
+    レポート
+
+    university:大学名
+    category:カテゴリー
+    content:レポート内容
+    """
+    university = models.ForeignKey('University', on_delete=models.CASCADE)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE)
+    word = models.CharField(max_length=1000)
+    content = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.word

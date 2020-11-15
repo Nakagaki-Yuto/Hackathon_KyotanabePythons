@@ -88,7 +88,7 @@ body {
   /*section*/
 
   .section {
-    max-width: 1000px;
+    max-width: 800px;
     text-align: center;
     margin : 0 auto;
 
@@ -250,14 +250,20 @@ body {
   }
 
   .report-body {
-    width: 700px;
+    width: 600px;
     margin: 50px auto;
     background-color: #EEE;
     padding: 50px 50px;
   }
 
-  .report-content {
-    
+  .report-item {
+    margin: 80px auto;
+    width: 300px;
+    text-align: left;
+  }
+
+  .report-item h3 {
+    font-size: 20px;
   }
 
   

@@ -8,5 +8,6 @@ urlpatterns = [
     path('thread/<int:pk>/post/', views.AddPostView, name='add_post'),
     path('category/<int:pk>/', views.ThreadListView, name='thread_list'),
     path('thread/add/', views.AddThreadView, name='add_thread'),
+    path('report/<int:pk>/', views.ReportView, name='report'),
 
 ]

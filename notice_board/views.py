@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import UserProfile, Thread, Post, Category
+from .models import UserProfile, Thread, Post, Category, Report
 from .forms import ProfileForm, UserCreateForm
 from django.contrib.auth.decorators import login_required
 
@@ -114,7 +114,21 @@ def AddThreadView(request):
     
 
 @login_required
-def ReportView(request):
+def ReportView(request, pk):
     """レポート"""
+    if pk == 1:
+        cate = '学業・講義'
+    elif pk == 2:
+        cate='サークル・部活動'
+    elif pk == 3:
+        cate='アルバイト'
+    elif pk == 4:
+        cate='就職活動'
+    elif pk == 5:
+        cate='趣味・遊び'
+    elif pk == 6:
+        cate = 'その他・雑談'
+    
+    reports = Report.objects.filter(category=pk)
     profile = UserProfile.objects.get(user=request.user)
-    return render(request, 'notice_board/thread_detail.html', {'profile': profile})
+    return render(request, 'notice_board/report.html', {'category':cate, 'profile': profile, 'reports':reports})

@@ -4,16 +4,30 @@
 {% block content %}
 
 {% if profile.is_university %}
-<div class="report-section section">
-    <div class="section-title report-title">
-        <h3>『{{ profile.university }}』様向け 分析レポート</h3>
+<div class="category-section section">
+    <div class="section-title category-title">
+        <h3>『{{ profile.university }}』様向け レポート</h3>
     </div>
-    <div class="section-body report-body">
-        <h3>レポート内容</h3>
-        <div class="report-content"></div>
+    <div class="section-body category-body">
+        <div class="category-item">
+            <a href="{% url 'report' pk=1 %}" class="btn btn-1">学業・講義</a>
+        </div>
+        <div class="category-item">
+            <a href="{% url 'report' pk=2 %}" class="btn btn-2">サークル・部活動</a>
+        </div>
+        <div class="category-item">
+            <a href="{% url 'report' pk=3 %}" class="btn btn-3">アルバイト</a>
+        </div>
+        <div class="category-item">
+            <a href="{% url 'report' pk=4 %}" class="btn btn-4">就職活動</a>
+        </div>
+        <div class="category-item">
+            <a href="{% url 'report' pk=5 %}" class="btn btn-5">趣味・遊び</a>
+        </div>
+        <div class="category-item">
+            <a href="{% url 'report' pk=6 %}" class="btn btn-6">その他・雑談</a>
+        </div>
     </div>
-
-   
 </div>
 
 {% else %}
@@ -54,7 +68,7 @@
                         <option value="4">就職活動</option>
                         <option value="5">趣味・遊び</option>
                         <option value="6">その他・雑談</option>
-                        </select>
+                    </select>
                     <br>
                     <label>掲示板タイトル</label>
                     <input type="text" class="thread-form-title" name="thread-form-title" required>
